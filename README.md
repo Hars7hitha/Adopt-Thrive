@@ -2,7 +2,7 @@
 
 A web application for pet adoption and rescue management. Connect with your perfect pet today!
 
-## 🐾 Features
+## Features
 
 - **Pet Listings**: Browse available pets for adoption
 - **Pet Submission**: Submit pets for adoption
@@ -10,29 +10,6 @@ A web application for pet adoption and rescue management. Connect with your perf
 - **Pet Gallery**: View detailed pet profiles with photos
 - **Contact & FAQ**: Get in touch and find answers
 - **Donation Support**: Help support our mission
-
-## 🛠️ Tech Stack
-
-**Frontend:**
-
-- HTML5
-- CSS3
-- Bootstrap 5.3.3
-- React 18.3.1
-- React Bootstrap 2.10.4
-
-**Backend:**
-
-- Node.js with Express.js
-- MongoDB
-- JWT Authentication
-- Multer for file uploads
-- CORS enabled
-
-**Additional Tools:**
-
-- Bcrypt for password hashing
-- Nodemon for development
 
 ## 📋 Prerequisites
 
@@ -81,45 +58,3 @@ The application will be available at **http://localhost:3000**
 - `POST /login` - User login
 - Additional routes available in server.js
 
-## 📁 Project Structure
-
-```
-Adopt-Thrive/
-├── public/               # Frontend static files
-│   ├── index.html
-│   ├── about-us.html
-│   ├── available-pets.html
-│   ├── contact-us.html
-│   ├── donate.html
-│   ├── faq.html
-│   ├── login.html
-│   └── submit-pet.html
-├── uploads/              # User uploaded pet photos
-├── server.js             # Express server configuration
-├── package.json          # Dependencies
-└── README.md            # This file
-```
-
-## 🔐 Security Notes
-
-- JWT secret should be changed in production
-- Use environment variables for sensitive data
-- Implement proper input validation
-- Enable HTTPS in production
-- Keep dependencies updated
-
-## 🤝 Contributing
-
-Feel free to fork this repository and submit pull requests for improvements.
-
-## 📝 License
-
-This project is open source and available under the MIT License.
-
-## 💬 Support
-
-For support, please open an issue on the GitHub repository or contact us through the Contact Us page.
-
----
-
-**Made with ❤️ for pet lovers everywhere**
