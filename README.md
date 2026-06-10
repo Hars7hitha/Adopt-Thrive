@@ -11,13 +11,13 @@ A web application for pet adoption and rescue management. Connect with your perf
 - **Contact & FAQ**: Get in touch and find answers
 - **Donation Support**: Help support our mission
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Node.js (v20 or higher)
 - MongoDB (running locally or Atlas connection)
 - npm
 
-## 🚀 Installation
+## Installation
 
 1. Clone the repository:
 
@@ -40,7 +40,7 @@ DB_NAME=bnmit
 JWT_SECRET=your_jwt_secret_here
 ```
 
-## 🏃 Running the Application
+## Running the Application
 
 Start the development server:
 
