@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - Pet Adoption and Rescue</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: "Comic Sans MS", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        overflow-x: hidden;
+      }
+
+      header {
+        background-color: #ff6f61;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s, background-color 0.3s;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+      }
+
+      nav a:hover {
+        color: #ff6f61;
+        background-color: white;
+      }
+
+      main {
+        padding: 2rem;
+        background: #fff5ee;
+        margin: 1rem auto;
+        border-radius: 8px;
+        width: 80%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        border: 2px dotted #ff6f61;
+        animation: borderFade 2s infinite alternate;
+      }
+
+      main:hover {
+        transform: scale(1.02);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .faq {
+        margin: 1rem 0;
+      }
+
+      .faq-item {
+        margin-bottom: 1rem;
+        border: 1px solid #ff6f61;
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .faq-item h2 {
+        margin: 0;
+        padding: 1rem;
+        background: #ff6f61;
+        color: white;
+        cursor: pointer;
+        font-size: 1.2rem;
+        position: relative;
+      }
+
+      .faq-item h2::after {
+        content: "+";
+        position: absolute;
+        right: 1rem;
+        transition: transform 0.3s;
+      }
+
+      .faq-item.active h2::after {
+        transform: rotate(45deg);
+      }
+
+      .faq-item p {
+        margin: 0;
+        padding: 1rem;
+        display: none;
+        background: #fff5ee;
+      }
+
+      .faq-item.active p {
+        display: block;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: #ff6f61;
+        color: white;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-media a {
+        color: white;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        transition: color 0.3s;
+      }
+
+      .social-media a:hover {
+        color: #ff856d;
+      }
+
+      @keyframes borderFade {
+        from {
+          border-color: #ff6f61;
+        }
+        to {
+          border-color: #ff856d;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo"><img src="logoo.png" alt="Logo" />Adopt & Thrive</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login/Register</a>
+        <a href="available-pets.html">Available Pets</a>
+        <a href="submit-pet.html">Submit a Pet</a>
+        <a href="donate.html">Donate</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="about-us.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Frequently Asked Questions</h1>
+      <div class="faq">
+        <div class="faq-item">
+          <h2>What is Pet Adoption and Rescue?</h2>
+          <p>
+            We are an organization dedicated to finding loving homes for
+            abandoned and stray pets. Our mission is to rescue, rehabilitate,
+            and rehome animals in need.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h2>How can I adopt a pet?</h2>
+          <p>
+            Browse our available pets, contact us or the rescue center, and
+            follow the adoption process detailed on our website.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h2>How can I submit a pet for rescue?</h2>
+          <p>
+            Visit our "Submit a Pet" page, fill out the form with the necessary
+            details, and upload a photo of the pet in need.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h2>How can I make a donation?</h2>
+          <p>
+            Visit our "Donate" page where you will find the options and
+            instructions for making a donation to support our cause.
+          </p>
+        </div>
+        <div class="faq-item">
+          <h2>How can I volunteer?</h2>
+          <p>
+            Contact us through our "Contact Us" page to learn about volunteer
+            opportunities and how you can get involved.
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy;Adopt & Thrive</p>
+      <div class="social-media">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </div>
+    </footer>
+    <script>
+      document.querySelectorAll(".faq-item h2").forEach((item) => {
+        item.addEventListener("click", () => {
+          const parent = item.parentElement;
+          parent.classList.toggle("active");
+        });
+      });
+    </script>
+  </body>
+</html>

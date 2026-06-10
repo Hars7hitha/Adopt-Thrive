@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate - Pet Adoption and Rescue</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: "Comic Sans MS", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        overflow-x: hidden;
+      }
+
+      header {
+        background-color: #ff6f61;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s, background-color 0.3s;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+      }
+
+      nav a:hover {
+        color: #ff6f61;
+        background-color: white;
+      }
+
+      main {
+        padding: 2rem;
+        background: #fff5ee;
+        margin: 1rem auto;
+        border-radius: 8px;
+        width: 80%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        border: 2px dotted #ff6f61;
+        animation: borderFade 2s infinite alternate;
+      }
+
+      main:hover {
+        transform: scale(1.02);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      form input,
+      form select {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        width: 80%;
+        max-width: 400px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      form button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        transition: background-color 0.3s;
+        border-radius: 25px;
+      }
+
+      form button:hover {
+        background-color: #ff856d;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 2rem;
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ff6f61;
+      }
+
+      th,
+      td {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      th {
+        background-color: #ff6f61;
+        color: white;
+      }
+
+      td {
+        background-color: #fff5ee;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: #ff6f61;
+        color: white;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-media a {
+        color: white;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        transition: color 0.3s;
+      }
+
+      .social-media a:hover {
+        color: #ff856d;
+      }
+
+      @keyframes borderFade {
+        from {
+          border-color: #ff6f61;
+        }
+        to {
+          border-color: #ff856d;
+        }
+      }
+
+      /* Popup Styles */
+      #popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem;
+        background: white;
+        border: 2px solid #ff6f61;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #popup p {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #ff6f61;
+      }
+
+      #popup button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #popup button:hover {
+        background-color: #ff856d;
+      }
+
+      /* OTP field hidden by default */
+      #otp-field {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo"><img src="logoo.png" alt="Logo" />Adopt & Thrive</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login/Register</a>
+        <a href="available-pets.html">Available Pets</a>
+        <a href="submit-pet.html">Submit a Pet</a>
+        <a href="donate.html">Donate</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="about us.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+    <main>
+      <h1>Donate</h1>
+      <form id="payment-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="amount">Donation Amount (in INR)</label>
+        <input type="number" id="amount" name="amount" required />
+
+        <label for="payment-method">Payment Method</label>
+        <select id="payment-method" name="payment-method" required>
+          <option value="" disabled selected>Select payment method</option>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="bank-transfer">Bank Transfer</option>
+        </select>
+
+        <!-- Additional fields for each payment method -->
+        <div id="credit-card-fields" class="payment-fields">
+          <label for="card-number">Card Number(16 digits)</label>
+          <input
+            type="text"
+            id="card-number"
+            name="card-number"
+            pattern="\d{16}"
+          />
+
+          <label for="expiry-date">Expiry Date (MM/YY)</label>
+          <input
+            type="text"
+            id="expiry-date"
+            name="expiry-date"
+            pattern="\d{2}/\d{2}"
+          />
+
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" pattern="\d{3}" />
+        </div>
+
+        <div id="paypal-fields" class="payment-fields">
+          <label for="paypal-email">PayPal Email</label>
+          <input type="email" id="paypal-email" name="paypal-email" />
+        </div>
+
+        <div id="bank-transfer-fields" class="payment-fields">
+          <label for="account-number">Account Number</label>
+          <input type="text" id="account-number" name="account-number" />
+
+          <label for="bank-name">Bank Name</label>
+          <input type="text" id="bank-name" name="bank-name" />
+        </div>
+
+        <div id="otp-field">
+          <label for="otp">Enter OTP</label>
+          <input type="text" id="otp" name="otp" />
+        </div>
+
+        <button type="submit">Donate Now</button>
+      </form>
+      <div id="popup">
+        <p>Thank you for your donation!</p>
+        <button id="close-popup">Close</button>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2024 Adopt & Thrive | All rights reserved</p>
+      <div class="social-media">
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+      </div>
+    </footer>
+    <script>
+      // Show and hide payment fields based on selected payment method
+      document
+        .getElementById("payment-method")
+        .addEventListener("change", function () {
+          const paymentMethod = this.value;
+          document.querySelectorAll(".payment-fields").forEach((field) => {
+            field.style.display = "none";
+          });
+          document.getElementById(`${paymentMethod}-fields`).style.display =
+            "block";
+        });
+
+      // Show OTP field if donation amount is more than a certain value
+      document.getElementById("amount").addEventListener("input", function () {
+        const otpField = document.getElementById("otp-field");
+        if (this.value > 10000) {
+          // example threshold value
+          otpField.style.display = "block";
+        } else {
+          otpField.style.display = "none";
+        }
+      });
+
+      // Handle form submission without redirecting
+      document
+        .getElementById("payment-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const popup = document.getElementById("popup");
+          // Simulate successful form submission
+          setTimeout(() => {
+            popup.style.display = "block";
+          }, 500);
+        });
+
+      // Close popup and reset the form
+      document
+        .getElementById("close-popup")
+        .addEventListener("click", function () {
+          const popup = document.getElementById("popup");
+          popup.style.display = "none";
+          document.getElementById("payment-form").reset();
+        });
+    </script>
+  </body>
+</html>

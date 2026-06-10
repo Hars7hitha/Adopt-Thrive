@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit a Pet - Adopt & Thrive</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: "Comic Sans MS", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        overflow-x: hidden;
+      }
+      header {
+        background-color: #ff6f61;
+        color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+      .logo img {
+        height: 50px;
+        margin-right: 10px;
+      }
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s, background-color 0.3s;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+      }
+      nav a:hover {
+        color: #ff6f61;
+        background-color: white;
+      }
+      .form-container {
+        padding: 2rem;
+        background: #fff5ee;
+        margin: 1rem auto;
+        border-radius: 8px;
+        width: 80%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border: 2px dotted #ff6f61;
+        animation: borderFade 2s infinite alternate;
+      }
+      form label {
+        display: block;
+        margin: 0.5rem 0 0.25rem;
+      }
+      form input,
+      form select,
+      form textarea,
+      form button {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      form button {
+        background: #ff6f61;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border-radius: 25px;
+      }
+      form button:hover {
+        background-color: #ff856d;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: #ff6f61;
+        color: white;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .social-media a {
+        color: white;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        transition: color 0.3s;
+      }
+      .social-media a:hover {
+        color: #ff856d;
+      }
+      @keyframes borderFade {
+        from {
+          border-color: #ff6f61;
+        }
+        to {
+          border-color: #ff856d;
+        }
+      }
+
+      /* Pop-up styles */
+      .popup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 1001;
+      }
+      .popup h2 {
+        margin: 0;
+        color: #ff6f61;
+      }
+      .popup button {
+        background: #ff6f61;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .popup button:hover {
+        background-color: #ff856d;
+      }
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="logoo.png" alt="Logo" />
+        Adopt & Thrive
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login/Register</a>
+        <a href="available-pets.html">Available Pets</a>
+        <a href="submit-pet.html">Submit a Pet</a>
+        <a href="donate.html">Donate</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="about-us.html">About Us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+    <section class="form-container" id="submit-pet">
+      <h2>Submit a Pet</h2>
+      <form
+        id="petSubmissionForm"
+        action="http://localhost:3000/submit-pet"
+        method="post"
+        enctype="multipart/form-data"
+        onsubmit="return handleSubmit(event)"
+      >
+        <label for="petName">Pet Name:</label>
+        <input
+          type="text"
+          id="petName"
+          name="petName"
+          required
+          pattern="[A-Za-z ]+"
+          title="Pet Name should only contain letters and spaces."
+        />
+
+        <label for="animaltype">Animal Type:</label>
+        <input
+          type="text"
+          id="animaltype"
+          name="animaltype"
+          list="animalsuggestions"
+          required
+        />
+        <datalist id="animalsuggestions">
+          <option value="Dog"></option>
+          <option value="Cat"></option>
+          <option value="Cow"></option>
+          <option value="Other"></option>
+        </datalist>
+
+        <label for="petAge">Age:</label>
+        <select id="petAge" name="petAge" required>
+          <option value="Young">Young</option>
+          <option value="Adult">Adult</option>
+          <option value="Senior">Senior</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+
+        <label for="petSize">Size:</label>
+        <select id="petSize" name="petSize" required>
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+
+        <label for="petPhoto">Photo:</label>
+        <input
+          type="file"
+          id="petPhoto"
+          name="petPhoto"
+          accept="image/*"
+          required
+        />
+
+        <label for="petDescription">Description:</label>
+        <textarea
+          id="petDescription"
+          name="petDescription"
+          rows="4"
+          required
+        ></textarea>
+
+        <label for="uploaderName">Your Name:</label>
+        <input
+          type="text"
+          id="uploaderName"
+          name="uploaderName"
+          required
+          pattern="[A-Za-z ]+"
+          title="Your Name should only contain letters and spaces."
+        />
+
+        <label for="uploaderEmail">Your Email:</label>
+        <input type="email" id="uploaderEmail" name="uploaderEmail" required />
+
+        <button type="submit">Submit Pet</button>
+      </form>
+    </section>
+    <footer>
+      <p>&copy; Adopt & Thrive</p>
+      <div class="social-media">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+      </div>
+    </footer>
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="popup">
+      <h2>Pet Submitted Successfully!</h2>
+      <button onclick="closePopup()">Close</button>
+    </div>
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Simulate form submission and show the popup
+        const form = document.getElementById("petSubmissionForm");
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => {
+            if (response.ok) {
+              showPopup();
+            } else {
+              alert("There was a problem submitting the form.");
+            }
+          })
+          .catch(() => {
+            alert("There was a problem submitting the form.");
+          });
+      }
+      function showPopup() {
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("popupOverlay").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("popupOverlay").style.display = "none";
+        // Optionally, redirect or clear form after submission
+        document.getElementById("petSubmissionForm").reset();
+      }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const token = sessionStorage.getItem("token");
+        if (!token) {
+          const currentUrl = window.location.href;
+          window.location.href = `login.html?redirect=${encodeURIComponent(
+            currentUrl
+          )}`;
+        }
+      });
+    </script>
+  </body>
+</html>
