@@ -1,6 +1,6 @@
 # Adopt & Thrive
 
-A web application for pet adoption and rescue management. Connect with your perfect pet today!
+A web application for pet adoption and rescue management. Connect with your perfect pet today!!
 
 ## Features
 
