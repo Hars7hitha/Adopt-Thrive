@@ -122,7 +122,7 @@ MongoClient.connect(mongoUri, {
       });
     };
 
-    // Example protected route
+    // Example protected route:
     app.get("/protected", authenticateToken, (req, res) => {
       res.send("This is a protected route");
     });
